@@ -13,7 +13,8 @@ export default function CreateNewReview({addNewReviewToArray, isLoggedIn}) {
     const [products, setProducts] = useState([])
     const [productId, setProductId] = useState("")
     const history = useHistory()
-
+    const [errors, setErrors] = useState([])
+   
 
     useEffect(() => {
         fetch("/products")
@@ -37,24 +38,29 @@ export default function CreateNewReview({addNewReviewToArray, isLoggedIn}) {
                 negative: negative,
                 repurchase: repurchase, 
                 image: image,
-                product_id: productId,
+                product_id: productId
             }),
         })
             .then((r) => r.json())
-            .then((newReview) => {
-              newReview.changesInSkin = newReview.changes_in_skin
-              delete newReview.changes_in_skin
-              addNewReviewToArray(newReview)})
-        
-    }
+            .then((data) => {
+             if(data.errors) {
+                setErrors(data.errors)
+             } else {
+              data.changesInSkin = data.changes_in_skin
+              delete data.changes_in_skin
+              addNewReviewToArray(data)
+              history.push("/skincare-products")
+             }
+            })
+          }
 
-    useEffect(()=>{
-      alert('Please login or sign up before creating a new review')
-      if (!isLoggedIn) {
-          history.push("/sign-up")
-      }
-     
-  }, [isLoggedIn])
+  //   useEffect(()=>{
+  //     // alert('Please login or sign up before creating a new review')
+  //     if (!isLoggedIn) {
+  //         history.push("/sign-up")
+  //     }
+  // }, [isLoggedIn])
+
 
     return (
         <div>
@@ -128,6 +134,9 @@ export default function CreateNewReview({addNewReviewToArray, isLoggedIn}) {
                 <br></br>
                 <button type="submit">Create Review</button>
             </form>
+            {errors.map((error) => {
+                return <p>{error}</p> 
+            })}
         </div>
     )
 }

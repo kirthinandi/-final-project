@@ -1,14 +1,14 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
-export default function NavBar() {
+export default function NavBar({isLoggedIn}) {
     return (
         <>
-            <nav>
-                <Link to="/">Home </Link>
-                <Link to="/skincare-products">Skincare Products </Link>
-                <Link to="/create-new-review">Create New Review </Link>
-                <Link to="/sign-up">Sign Up</Link>
+            <nav className="Navbar">
+                <Link to="/" className="link">Home </Link>
+                <Link to="/skincare-products" className="link">Skincare Products </Link>
+                {isLoggedIn ? <Link to="/create-new-review" className="link">Create New Review </Link> : ""}
+                {isLoggedIn ? "" : <Link to="/sign-up" className="link">Sign Up</Link> }
             </nav>
         </>
     )

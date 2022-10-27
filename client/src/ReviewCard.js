@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
 export default function ReviewCard({review, currentUser, handleEditReview, handleDeleteReview}) {
 
-    const {id, rating, changes_in_skin, duration, positive, negative, repurchase, image, user} = review
+    const {id, rating, changes_in_skin, duration, positive, negative, repurchase, image, user_id} = review
     const [editedRating, setEditedRating] = useState(rating);
     const [editedChangesInSkin, setEditedChangesInSkin] = useState(changes_in_skin);
     const [editedDuration, setEditedDuration] = useState(duration);
@@ -11,6 +11,11 @@ export default function ReviewCard({review, currentUser, handleEditReview, handl
     const [like, setLike] = useState(0)
     const [dislike, setDislike] = useState(0)
     
+    const [user, setUser] = useState({})
+
+    useEffect(()=>{
+        fetch('/users/'+user_id).then(r=>r.json()).then(data => setUser(data))
+    }, [user_id])
 
     function handleEditClick() {
         fetch(`/reviews/${review.id}`, {
@@ -68,11 +73,10 @@ export default function ReviewCard({review, currentUser, handleEditReview, handl
                     <p>Negative About Product:<span contentEditable={currentUser &&(currentUser.id === review.user_id)} onInput={e => {setEditedNegative(e.target.textContent)}}> {negative}</span></p>
                     <p>Would You Repurchase/Have You Repurchased?: {repurchase ? "Yes" : "No"}</p>
                     <img src={image} />
-                    {/* <p>Created By: {review.username}</p> */}
+                    <p>Created By: {user.username}</p>
                     <br></br>
                     <button onClick={likeCount}>Like: {like}</button>
                     <button onClick={dislikeCount}>Dislike: {dislike}</button>
-                    
         </div>
     )
 }

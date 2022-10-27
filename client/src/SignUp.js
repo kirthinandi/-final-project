@@ -1,10 +1,12 @@
 import React, {useState} from 'react';
+import {useHistory} from 'react-router-dom';
 
 export default function SignUp({onLogin}) {
     
 const [username, setUsername] = useState("");
 const [password, setPassword] = useState("");
 const [passwordConfirmation, setPasswordConfirmation] = useState("")
+const history = useHistory()
 
 function handleSubmit(e) {
     e.preventDefault();
@@ -21,6 +23,7 @@ function handleSubmit(e) {
     })
         .then((r) => r.json())
         .then(onLogin);
+        history.push("/")
 }
 
     return(

@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-}
+} 
 
 .App-logo {
   height: 40vmin;
@@ -36,3 +36,84 @@
     transform: rotate(360deg);
   }
 }
+
+body {
+  background-image: url("http://cdn.shopify.com/s/files/1/0565/7080/6458/collections/11f67cadfcdfd8784ca89aa86130c5e5.jpg?v=1660200435");
+  background-size: 250vh 100vh;
+}
+
+.title {
+  font-family: 'Cutive Mono', monospace;
+  font-size: 100px;
+  text-align: center;
+  margin-top: 50px;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Cutive+Mono&family=Syne+Mono&display=swap');
+
+.Navbar {
+  margin-top: -25px;
+  text-align: left;
+}
+
+.link {
+  float: center;
+  padding: 0.5rem 1rem;
+  margin: 0 1rem;
+  text-decoration: none;
+  font-size: 1.35em;
+  color: rgb(0, 0, 0);
+  border-block:  2px solid;
+
+}
+
+.link:hover {
+  background-color:rgb(92, 204, 241);
+}
+
+.login-form {
+  text-align: right;
+  margin-right: 15px;
+  margin-top: 20px;
+} 
+
+.login-input {
+  height: 25px;
+  width: 8em;
+  margin: 0 0.25rem;
+}
+
+.login-input, 
+.login-input::placeholder {
+  font-size: 20px;
+  text-align: center;
+}
+
+.home-img {
+  width: 80em;
+  margin-bottom: 50px;
+  margin-top: -25px;
+}
+
+.login-button {
+  height: 32px;
+  width: 75px;
+  font-size: 18px;
+  margin-left: 5px;
+  background-color:rgb(72, 203, 247);
+  border-radius: 4px;
+  font-family: 'Cutive Mono', monospace;
+}
+
+.logout-button {
+  margin-left: 74em;
+  height: 32px;
+  width: 90px;
+  background-color:rgb(72, 203, 247);
+  font-size: 20px;
+  border-radius: 4px;
+  font-family: 'Cutive Mono', monospace;
+}
+
+
+

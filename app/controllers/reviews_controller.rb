@@ -35,4 +35,8 @@ class ReviewsController < ApplicationController
         params.permit(:product_id, :rating, :changes_in_skin, :duration, :positive, :negative, :repurchase, :image)
     end
 
+    def update_params
+        params.permit(:rating, :changes_in_skin, :duration, :positive, :negative)
+    end
+
 end

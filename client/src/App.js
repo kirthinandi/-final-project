@@ -1,3 +1,4 @@
+import "./App.css";
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import NavBar from "./NavBar";
@@ -65,7 +66,6 @@ function handleLogoutClick() {
     if (r.ok) {
       setUser(null);
     }
-
   })
 }
 
@@ -81,29 +81,35 @@ useEffect(() => {
   })
 }, [])
 
-function addNewReviewToArray(newReview) {
-  setReviews([...reviews, newReview])
+function addNewReviewToArray(data) {
+  setReviews([...reviews, data])
 }
 
   return (
     <BrowserRouter>
       <div className="App">
-      <form onSubmit={handleSubmit}>
-        <input  
-          type="text"
-          placeholder="Username"
-          onChange = {(e) => setUsername(e.target.value)} 
-          value={username} 
-        />
-        <input 
-          type="password"
-          placeholder="Password"
-          onChange = {(e) => setPassword(e.target.value)} 
-          value={password} />
-        <button type="submit">Login</button>
-        {!!user ? <button onClick={handleLogoutClick}>Logout</button> : ""} 
-      </form>
-      <NavBar />
+        <div className="login-form">
+        { !!user ? "" : <form onSubmit={handleSubmit}>
+          <input  
+            type="text"
+            placeholder="Username"
+            onChange = {(e) => setUsername(e.target.value)} 
+            value={username}
+            className="login-input" 
+          />
+          <input 
+            type="password"
+            placeholder="Password"
+            onChange = {(e) => setPassword(e.target.value)} 
+            value={password} 
+            className="login-input" 
+          />
+          <button type="submit" className="login-button"><b>LOGIN</b></button> 
+          </form> }
+        </div>
+        {!!user ? <button onClick={handleLogoutClick} className="logout-button"><b>LOGOUT</b></button> : ""} 
+
+        <NavBar isLoggedIn={!!user}/>
         <Switch>
           {/* <Route path="/testing">
             <h1>Test Route</h1>
@@ -112,7 +118,7 @@ function addNewReviewToArray(newReview) {
             <SkincareProducts products={products} currentUser={user} reviews={reviews} setReviews={setReviews}/>
           </Route>
           <Route path="/sign-up">
-            <SignUp />
+            <SignUp/>
           </Route>
           <Route path="/create-new-review">
             <CreateNewReview addNewReviewToArray={addNewReviewToArray} isLoggedIn={!!user}/>

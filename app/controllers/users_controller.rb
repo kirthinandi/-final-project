@@ -8,7 +8,11 @@ class UsersController < ApplicationController
     end
 
     def show
-        render json: cur_user
+        if params[:id] 
+            render json: User.find(params[:id])
+        else
+            render json: cur_user
+        end
     end
 
     private
