@@ -57,26 +57,26 @@ export default function ReviewCard({review, currentUser, handleEditReview, handl
     }
    
     return (
-          <div>
-            <h2>Review</h2>
+          <div className="review-card">
             { currentUser&& (currentUser.id === review.user_id) ? <div>
                     {/* if current user is truthy and conditional, then render buttons */}
                     {/* if current user is falsy, it will not bother checking ids */}
-                    <button className= "button" onClick={handleEditClick}
-                    >Edit</button>
-                    <button className= "button" onClick={handleDeleteClick}>Delete</button>
+                    <button className="edit-button" onClick={handleEditClick}
+                    ><b>EDIT</b></button>
+                    <button className="delete-button" onClick={handleDeleteClick}><b>DELETE</b></button>
                 </div> : null }
-                     <p>Rating:<span contentEditable={currentUser &&(currentUser.id === review.user_id)} onInput={e => {setEditedRating(e.target.textContent)}}>{rating}</span></p>
-                    <p>Changes In Your Skin Since Using the Product:<span contentEditable={currentUser &&(currentUser.id === review.user_id)} onInput={e => {setEditedChangesInSkin(e.target.textContent)}}> {changes_in_skin}</span></p>
-                    <p>Amount of Time You Used The Product:<span contentEditable={currentUser &&(currentUser.id === review.user_id)} onInput={e => {setEditedDuration(e.target.textContent)}}> {duration}</span></p>
-                    <p>Positive About Product:<span contentEditable={currentUser &&(currentUser.id === review.user_id)} onInput={e => {setEditedPositive(e.target.textContent)}}> {positive}</span></p>
-                    <p>Negative About Product:<span contentEditable={currentUser &&(currentUser.id === review.user_id)} onInput={e => {setEditedNegative(e.target.textContent)}}> {negative}</span></p>
-                    <p>Would You Repurchase/Have You Repurchased?: {repurchase ? "Yes" : "No"}</p>
-                    <img src={image} />
-                    <p>Created By: {user.username}</p>
+                <h2 className="review-title">Review</h2>
+                    <p><b>Rating:</b><span contentEditable={currentUser &&(currentUser.id === review.user_id)} onInput={e => {setEditedRating(e.target.textContent)}}> {rating}</span></p>
+                    <p><b>Changes In Your Skin Since Using the Product:</b><span contentEditable={currentUser &&(currentUser.id === review.user_id)} onInput={e => {setEditedChangesInSkin(e.target.textContent)}}> {changes_in_skin}</span></p>
+                    <p><b>Amount of Time You Used The Product:</b><span contentEditable={currentUser &&(currentUser.id === review.user_id)} onInput={e => {setEditedDuration(e.target.textContent)}}> {duration}</span></p>
+                    <p><b>Positive About Product:</b><span contentEditable={currentUser &&(currentUser.id === review.user_id)} onInput={e => {setEditedPositive(e.target.textContent)}}> {positive}</span></p>
+                    <p><b>Negative About Product:</b><span contentEditable={currentUser &&(currentUser.id === review.user_id)} onInput={e => {setEditedNegative(e.target.textContent)}}> {negative}</span></p>
+                    <p><b>Would You Repurchase/Have You Repurchased?:</b> {repurchase ? "Yes" : "No"}</p>
+                    <img src={image} className="review-image"/>
+                    <p><b>Created By:</b> {user.username}</p>
                     <br></br>
-                    <button onClick={likeCount}>Like: {like}</button>
-                    <button onClick={dislikeCount}>Dislike: {dislike}</button>
-        </div>
+                    <button onClick={likeCount} className="like-button"><b>Like:</b> {like}</button>
+                    <button onClick={dislikeCount} className="like-button"><b>Dislike:</b> {dislike}</button>
+         </div>
     )
 }

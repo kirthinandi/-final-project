@@ -21,8 +21,8 @@ export default function SkincareProducts({products, currentUser, reviews, setRev
     
     return (
         <div>
-            <h1>Skincare Products</h1>
-            <select onChange={handlePriceChange}>
+            <h1 className="products-title">SKINCARE PRODUCTS</h1>
+            <select onChange={handlePriceChange} className="price-dropdown">
                 <option value="">{" "}-- select a price --{" "}</option>
                 <option value="$">$: $1-$10</option>
                 <option value="$$">$$: $11-20</option>

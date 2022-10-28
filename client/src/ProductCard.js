@@ -22,15 +22,17 @@ export default function ProductCard({product, currentUser, reviews, setReviews})
    
     return(
         <div>
-            <h4>Product Name: {name}</h4>
-            <h4>Brand: {brand}</h4>
-            <h4>Manufacturing Country: {country}</h4>
-            <h4>Product Type: {type_of_product}</h4>
-            <h4>Main Ingredients: {ingredients}</h4>
-            <h4>Targetting: {what_its_treating}</h4>
-            <h4>How To Use: {directions}</h4>
-            <h4>Price:{price}</h4>
-            <img src={image} alt={name}/>
+            <div className="product-card">
+                <h3 className="product-name">{name}</h3>
+                <p><b>Brand:</b> {brand}</p>
+                <p><b>Manufacturing Country:</b> {country}</p>
+                <p><b>Product Type:</b> {type_of_product}</p>
+                <p><b>Main Ingredients:</b> {ingredients}</p>
+                <p><b>Targetting:</b> {what_its_treating}</p>
+                <p><b>How To Use:</b> {directions}</p>
+                <p><b>Price:</b>{price}</p>
+                <img src={image} alt={name} className="product-image"/>
+            </div>
             {product.reviews.map((review) => {
                 return (
                     <ReviewCard key={review.id} review={review} currentUser={currentUser} handleEditReview={handleEditReview} handleDeleteReview={handleDeleteReview}/>

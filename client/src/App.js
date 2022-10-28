@@ -6,6 +6,7 @@ import Home from "./Home";
 import SkincareProducts from "./SkincareProducts";
 import SignUp from "./SignUp";
 import CreateNewReview from "./CreateNewReview";
+import SkincareRoutine from "./SkincareRoutine";
 
 function App() {
 
@@ -114,6 +115,9 @@ function addNewReviewToArray(data) {
           {/* <Route path="/testing">
             <h1>Test Route</h1>
           </Route> */}
+          <Route path="/skincare-routine">
+            <SkincareRoutine />
+          </Route>
           <Route path="/skincare-products"> 
             <SkincareProducts products={products} currentUser={user} reviews={reviews} setReviews={setReviews}/>
           </Route>

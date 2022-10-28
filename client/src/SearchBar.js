@@ -8,6 +8,7 @@ export default function SearchBar({searchWord, onSearchChange}) {
             placeholder='Search using a product type to find new products!' 
             value={searchWord}
             onChange={(e) => onSearchChange(e.target.value)}
+            className="searchbar"
             />
         </div>
     )
