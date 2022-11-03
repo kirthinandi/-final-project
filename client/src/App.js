@@ -121,12 +121,12 @@ function addNewReviewToArray(data) {
           <Route path="/skincare-products"> 
             <SkincareProducts products={products} currentUser={user} reviews={reviews} setReviews={setReviews}/>
           </Route>
-          <Route path="/sign-up">
+          {!!user ? "" :<Route path="/sign-up">
             <SignUp/>
-          </Route>
-          <Route path="/create-new-review">
+          </Route> }
+          {!!user ? <Route path="/create-new-review">
             <CreateNewReview addNewReviewToArray={addNewReviewToArray} isLoggedIn={!!user}/>
-          </Route>
+          </Route> : ""}
           <Route path="/"> 
             <Home /> 
           </Route>
